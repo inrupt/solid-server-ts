@@ -9,7 +9,7 @@ import RequestBodyParser from './RequestBodyParser';
 import ParsedRequestBody from './IParsedRequestBody';
 
 import AuthorizationManager from '../auth/IAuthorizationManager';
-import ResourceIdentifier from '../ldp/IResourceIdentifier';
+// import ResourceIdentifier from '../ldp/IResourceIdentifier';
 import LdpOperationFactory from '../ldp/operations/LdpOperationFactory';
 
 /**
@@ -66,7 +66,7 @@ export default class ResourceStoreRequestHandler {
   protected async _handleRequest(request: http.IncomingMessage, response: http.ServerResponse) {
     // Parse the request
     const parsedRequest = await this.parseRequest(request);
-    const { agent, target, operation, requiredPermissions } = parsedRequest;
+    const { agent, target, /* operation, */ requiredPermissions } = parsedRequest;
 
     // Validate whether the agent has sufficient permissions
     let hasRequiredPermissions;
@@ -82,13 +82,13 @@ export default class ResourceStoreRequestHandler {
     }
 
     // If a modification was requested, perform it
-    let resource: ResourceIdentifier | null = target;
-    if (operation.performsModification) {
-      resource = await operation.performModification();
-    }
+    // let resource: ResourceIdentifier | null = target;
+    // if (operation.performsModification) {
+    //   resource = await operation.execute();
+    // }
 
     // TODO: write representation of the resource
-    response.end({ resource });
+    response.end({ /* resource */ });
   }
 
   /**
@@ -118,12 +118,12 @@ export default class ResourceStoreRequestHandler {
       throw new HttpError(HttpError.METHOD_NOT_ALLOWED);
     }
     // Pass the body to the operation if necessary
-    if (operation.acceptsBody) {
-      operation.body = request;
-    }
-    if (operation.acceptsParsedBody) {
-      operation.parsedBody = await this.parseRequestBody(request);
-    }
+    // if (operation.acceptsBody) {
+    //   operation.body = request;
+    // }
+    // if (operation.acceptsParsedBody) {
+    //   operation.parsedBody = await this.parseRequestBody(request);
+    // }
 
     // Determine whether the target requires control permissions
     let requiredPermissions = operation.requiredPermissions;
@@ -131,7 +131,7 @@ export default class ResourceStoreRequestHandler {
       requiredPermissions = requiredPermissions.update({ control: true });
     }
 
-    return { agent, target, operation, requiredPermissions };
+    return { agent, target, /* operation, */ requiredPermissions };
   }
 
   /**
