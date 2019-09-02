@@ -8,7 +8,7 @@ import CredentialsExtractor from './ICredentialsExtractor';
 import RequestBodyParser from './RequestBodyParser';
 import ParsedRequestBody from './IParsedRequestBody';
 
-import AuthorizationManager from '../auth/IAuthorizationManager';
+import AuthorizationManager from '../auth/IAuthorizer';
 // import ResourceIdentifier from '../ldp/IResourceIdentifier';
 import LdpOperationFactory from '../ldp/operations/LdpOperationFactory';
 
@@ -72,7 +72,7 @@ export default class ResourceStoreRequestHandler {
     let hasRequiredPermissions;
     try {
       hasRequiredPermissions = await this.authorizationManager.
-        hasPermissions(agent, target, requiredPermissions);
+        ensurePermissions(agent, target, requiredPermissions);
     } catch {
       hasRequiredPermissions = false;
     }
