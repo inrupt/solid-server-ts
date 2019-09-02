@@ -35,7 +35,7 @@ describe('A PutOperation instance', () => {
 
     it('replaces the target representation', () => {
       expect(store.setRepresentation).toHaveBeenCalledTimes(1);
-      expect(store.setRepresentation).toHaveBeenCalledWith(target, body);
+      expect(store.setRepresentation).toHaveBeenCalledWith(target, body, {});
     });
 
     it('returns the target', () => {

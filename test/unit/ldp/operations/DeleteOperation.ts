@@ -33,7 +33,7 @@ describe('A DeleteOperation instance', () => {
 
     it('deletes the target', () => {
       expect(store.deleteResource).toHaveBeenCalledTimes(1);
-      expect(store.deleteResource).toHaveBeenCalledWith(target);
+      expect(store.deleteResource).toHaveBeenCalledWith(target, {});
     });
 
     it('returns null', () => {

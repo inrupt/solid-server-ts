@@ -37,7 +37,7 @@ describe('A PostOperation instance', () => {
 
     it('adds a resource to the target', () => {
       expect(store.addResource).toHaveBeenCalledTimes(1);
-      expect(store.addResource).toHaveBeenCalledWith(target, body);
+      expect(store.addResource).toHaveBeenCalledWith(target, body, {});
     });
 
     it('returns the new resource identifier', () => {

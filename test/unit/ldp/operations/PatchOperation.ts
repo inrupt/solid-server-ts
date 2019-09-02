@@ -37,7 +37,7 @@ describe('A PatchOperation instance', () => {
 
     it('applies the patch to the target', () => {
       expect(store.modifyResource).toHaveBeenCalledTimes(1);
-      expect(store.modifyResource).toHaveBeenCalledWith(target, parsedBody);
+      expect(store.modifyResource).toHaveBeenCalledWith(target, parsedBody, {});
     });
 
     it('returns the target', () => {

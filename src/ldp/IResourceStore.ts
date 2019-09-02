@@ -1,6 +1,8 @@
 import Patch from './IPatch';
-import Representation from './IRepresentation';
-import ResourceIdentifier from './IResourceIdentifier';
+import IRepresentation from './IRepresentation';
+import IRepresentationPreferences from './IRepresentationPreferences';
+import Conditions from './Conditions';
+import IResourceIdentifier from './IResourceIdentifier';
 
 export default interface IResourceStore {
   /**
@@ -10,7 +12,9 @@ export default interface IResourceStore {
    *
    * @returns - A representation of the resource
    */
-  getRepresentation(identifier: ResourceIdentifier): Promise<Representation>;
+  getRepresentation(identifier: IResourceIdentifier,
+                    representationPreferences: IRepresentationPreferences,
+                    conditions: Conditions): Promise<IRepresentation>;
 
   /**
    * Adds a resource to the container.
@@ -20,8 +24,9 @@ export default interface IResourceStore {
    *
    * @returns - The identifier of the appended resource
    */
-  addResource(container: ResourceIdentifier,
-              representation: Representation): Promise<ResourceIdentifier>;
+  addResource(container: IResourceIdentifier,
+              representation: IRepresentation,
+              conditions: Conditions): Promise<IResourceIdentifier>;
 
   /**
    * Sets or replaces the representation of a resource.
@@ -29,8 +34,9 @@ export default interface IResourceStore {
    * @param identifier - The identifier of the resource
    * @param representation - A representation of the resource
    */
-  setRepresentation(identifier: ResourceIdentifier,
-                    representation: Representation): Promise<void>;
+  setRepresentation(identifier: IResourceIdentifier,
+                    representation: IRepresentation,
+                    conditions: Conditions): Promise<void>;
 
   /**
    * Deletes the given resource.
@@ -38,7 +44,8 @@ export default interface IResourceStore {
    * @param identifier - The identifier of the resource
    * @param representation - A representation of the resource
    */
-  deleteResource(identifier: ResourceIdentifier): Promise<void>;
+  deleteResource(identifier: IResourceIdentifier,
+                 conditions: Conditions): Promise<void>;
 
   /**
    * Modifies the given resource.
@@ -46,5 +53,6 @@ export default interface IResourceStore {
    * @param identifier - The identifier of the resource
    * @param patch - The patch to be applied to the resource
    */
-  modifyResource(identifier: ResourceIdentifier, patch: Patch): Promise<void>;
+  modifyResource(identifier: IResourceIdentifier, patch: Patch,
+                 conditions: Conditions): Promise<void>;
 }

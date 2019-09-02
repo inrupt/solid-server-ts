@@ -3,6 +3,7 @@ import ResourceStore from '../IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import Representation from '../IRepresentation';
 import PermissionSet from '../../permissions/PermissionSet';
+import Conditions from '../Conditions';
 
 /**
  * Performs an LDP PUT operation.
@@ -20,7 +21,7 @@ export default class PutOperation extends LdpOperation {
   get requiredPermissions(): PermissionSet { return PermissionSet.WRITE_ONLY; }
 
   async performModification(): Promise<ResourceIdentifier> {
-    await this.store.setRepresentation(this.target, this.body as Representation);
+    await this.store.setRepresentation(this.target, this.body as Representation, {} as Conditions);
     return this.target;
   }
 }

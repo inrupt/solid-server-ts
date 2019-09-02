@@ -2,6 +2,7 @@ import LdpOperation from './LdpOperation';
 import ResourceStore from '../IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
+import Conditions from '../Conditions';
 
 /**
  * Performs an LDP DELETE operation.
@@ -16,7 +17,7 @@ export default class DeleteOperation extends LdpOperation {
   get requiredPermissions(): PermissionSet { return PermissionSet.WRITE_ONLY }
 
   async performModification(): Promise<null> {
-    await this.store.deleteResource(this.target);
+    await this.store.deleteResource(this.target, {} as Conditions);
     return null;
   }
 }

@@ -3,6 +3,7 @@ import ResourceStore from '../IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
 import ParsedRequestBody from '../../http/IParsedRequestBody';
+import Conditions from '../Conditions';
 
 /**
  * Performs an LDP PATCH operation.
@@ -26,7 +27,7 @@ export default class PatchOperation extends LdpOperation {
   }
 
   async performModification(): Promise<ResourceIdentifier> {
-    await this.store.modifyResource(this.target, this.patch);
+    await this.store.modifyResource(this.target, this.patch, {} as Conditions);
     return this.target;
   }
 }
