@@ -12,10 +12,11 @@ import PutOperation from './PutOperation';
 import DeleteOperation from './DeleteOperation';
 import PatchOperation from './PatchOperation';
 
+import IOperationFactory from './IOperationFactory'
 /**
  * Factory for LDP operations.
  */
-export default class LdpOperationFactory {
+export default class LdpOperationFactory implements IOperationFactory {
   private store: ResourceStore;
 
   private operations: {
