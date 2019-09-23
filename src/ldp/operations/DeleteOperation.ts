@@ -1,22 +1,27 @@
 import LdpOperation from './LdpOperation';
-import ResourceStore from '../ResourceStore';
-import ResourceIdentifier from '../ResourceIdentifier';
+import ResourceStore from '../IResourceStore';
+import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
+import Conditions from '../Conditions';
+import IRepresentationPreferences from '../IRepresentationPreferences';
+import ResponseDescription from '../../http/ResponseDescription';
 
 /**
  * Performs an LDP DELETE operation.
  */
 export default class DeleteOperation extends LdpOperation {
-  constructor(settings :
+  constructor(settings:
               { store: ResourceStore,
-                target: ResourceIdentifier }) {
+                target: ResourceIdentifier,
+                preferences: IRepresentationPreferences,
+              }) {
     super(settings);
   }
 
-  get requiredPermissions(): PermissionSet { return PermissionSet.WRITE_ONLY }
+  get requiredPermissions(): PermissionSet { return PermissionSet.WRITE_ONLY; }
 
-  async performModification(): Promise<null> {
-    await this.store.deleteResource(this.target);
-    return null;
+  public async execute(): Promise<ResponseDescription> {
+    await this.store.deleteResource(this.target, {} as Conditions);
+    return new ResponseDescription();
   }
 }

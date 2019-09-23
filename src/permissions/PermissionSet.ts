@@ -17,7 +17,7 @@ export default class PermissionSet {
 
   constructor({ read = false,   write = false,   append = false,   control = false }:
               { read?: boolean, write?: boolean, append?: boolean, control?: boolean }) {
-    this.flags = { read, write, append: append || write, control };
+    this.flags = { read, write, append, control };
   }
 
   public get read() { return this.flags.read; }

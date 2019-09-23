@@ -1,32 +1,24 @@
+import ResourceStore from '../IResourceStore';
+import ResourceIdentifier from '../IResourceIdentifier';
+import Conditions from '../Conditions';
 import LdpOperation from './LdpOperation';
-import ResourceStore from '../ResourceStore';
-import ResourceIdentifier from '../ResourceIdentifier';
-import PermissionSet from '../../permissions/PermissionSet';
-import ParsedRequestBody from '../../http/ParsedRequestBody';
+import IRepresentationPreferences from '../IRepresentationPreferences';
+import IPatch from '../IPatch';
 
 /**
  * Performs an LDP PATCH operation.
  */
 export default class PatchOperation extends LdpOperation {
-  constructor(settings :
+  constructor(settings:
               { store: ResourceStore,
                 target: ResourceIdentifier,
-                parsedBody?: ParsedRequestBody }) {
+                body: IPatch,
+                preferences: IRepresentationPreferences }) {
     super(settings);
   }
 
-  get acceptsParsedBody(): boolean { return true; }
-
-  get requiredPermissions(): PermissionSet {
-    return this.patch.requiredPermissions;
-  }
-
-  protected get patch(): ParsedRequestBody {
-    return this.parsedBody as ParsedRequestBody;
-  }
-
-  async performModification(): Promise<ResourceIdentifier> {
-    await this.store.modifyResource(this.target, this.patch);
+  public async execute(): Promise<ResourceIdentifier> {
+    await this.store.modifyResource(this.target, this.requestBody as IPatch, {} as Conditions);
     return this.target;
   }
 }

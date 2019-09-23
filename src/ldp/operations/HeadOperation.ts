@@ -1,14 +1,19 @@
+import ResourceStore from '../IResourceStore';
+import ResourceIdentifier from '../IResourceIdentifier';
 import LdpOperation from './LdpOperation';
-import ResourceStore from '../ResourceStore';
-import ResourceIdentifier from '../ResourceIdentifier';
+import IRepresentationPreferences from '../IRepresentationPreferences';
+import PermissionSet from '../../permissions/PermissionSet';
 
 /**
  * Performs an LDP HEAD operation.
  */
 export default class HeadOperation extends LdpOperation {
-  constructor(settings :
+  constructor(settings:
               { store: ResourceStore,
-                target: ResourceIdentifier }) {
+                target: ResourceIdentifier,
+                preferences: IRepresentationPreferences }) {
     super(settings);
   }
+
+  get requiredPermissions(): PermissionSet { return PermissionSet.READ_ONLY; }
 }
