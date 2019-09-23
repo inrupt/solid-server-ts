@@ -27,7 +27,7 @@
   ],
   "name": "solid-server-ts",
   "description": "This repository contains proposed interfaces, components, and tests to inform the design of a [Solid](https://github.com/solid/solid-spec/) server in TypeScript.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/exports.js",
   "directories": {
     "test": "test"
