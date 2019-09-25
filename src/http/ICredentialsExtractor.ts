@@ -11,5 +11,5 @@ export default interface ICredentialsExtractor {
    * @param request - The HTTP request
    * @returns The credentials
    */
-  extract(request: http.IncomingMessage): Credentials;
+  extract(request: http.IncomingMessage): Promise<Credentials>;
 }
