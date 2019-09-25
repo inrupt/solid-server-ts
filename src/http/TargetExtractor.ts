@@ -3,6 +3,7 @@ import * as http from 'http';
 import URL from 'url';
 import ResourceIdentifier from '../ldp/IResourceIdentifier';
 
+// TODO: This RegEx could be improved:
 const VALID_HOST = /^([a-z0-9-]+\.)*[a-z0-9-]+$/;
 
 /**
@@ -29,11 +30,13 @@ export default class TargetExtractor {
   public extract(request: http.IncomingMessage): ResourceIdentifier {
     // Extract path
     const { pathname } = URL.parse(request.url || '');
-    const path = decodeURI(pathname || '/').replace(/(?<=.)\/+$/, '');
+    const path = decodeURIComponent(pathname || '/').replace(/(?<=.)\/+$/, '');
     if (path.indexOf('/..') >= 0) {
       throw new Error(`Disallowed /.. segment in URL ${pathname}`);
     }
     // Determine whether this is the path to an ACL resource
+    // Note that this enshrines certain assumptions about the server's
+    // system for naming ACL documents, see https://github.com/inrupt/solid-server-ts/issues/10
     const isAcl = path.endsWith(this.aclExtension);
 
     // Extract domain
