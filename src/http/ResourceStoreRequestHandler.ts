@@ -103,7 +103,7 @@ export default class ResourceStoreRequestHandler {
     let agent;
     let target;
     try {
-      agent = this.credentialsExtractor.extract(request);
+      agent = await this.credentialsExtractor.extract(request);
       target = this.targetExtractor.extract(request);
     } catch (cause) {
       throw new HttpError(HttpError.BAD_REQUEST, { cause });
