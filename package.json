@@ -1,6 +1,7 @@
 {
   "scripts": {
     "build": "tsc",
+    "coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts",
     "jest": "jest",
     "lint": "tslint *.js src/**/*.ts test/**/*.ts",
     "test": "npm run lint && npm run jest",
