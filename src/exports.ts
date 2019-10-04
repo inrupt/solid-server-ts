@@ -1,7 +1,7 @@
 export { default as Conditions } from './ldp/Conditions';
 export { default as IAuthorizer } from './authorization/IAuthorizer';
 export { default as ICredentials } from './authentication/ICredentials';
-export { default as IHttpHandler } from './ldp/IHttpHandler';
+export { default as IHttpHandler } from './http/IHttpHandler';
 export { default as IOperation } from './ldp/operations/IOperation';
 export { default as IOperationFactory } from './ldp/operations/IOperationFactory';
 export { default as IPatch } from './ldp/IPatch';
