@@ -3,11 +3,11 @@ import MethodExtractor from '../../../src/http/MethodExtractor';
 import { createRequest } from 'node-mocks-http';
 
 describe('A MethodExtractor instance', () => {
-  let extractor : MethodExtractor;
+  let extractor: MethodExtractor;
   beforeAll(() => { extractor = new MethodExtractor(); });
 
   it('defaults to GET', () => {
-    const request = createRequest();
+    const request = createRequest({ method: undefined });
     expect(extractor.extract(request)).toEqual('GET');
   });
 
