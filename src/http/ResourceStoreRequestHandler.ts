@@ -77,7 +77,7 @@ export default class ResourceStoreRequestHandler {
       hasRequiredPermissions = false;
     }
     if (!hasRequiredPermissions) {
-      throw new HttpError(agent.authenticated ? HttpError.FORBIDDEN
+      throw new HttpError(agent.validations.length ? HttpError.FORBIDDEN
                                               : HttpError.UNAUTHORIZED);
     }
 
