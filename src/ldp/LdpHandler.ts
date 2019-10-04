@@ -2,20 +2,20 @@ import * as http from 'http';
 
 import HttpError from 'standard-http-error';
 
-import TargetExtractor from './TargetExtractor';
-import MethodExtractor from './MethodExtractor';
+import TargetExtractor from '../http/TargetExtractor';
+import MethodExtractor from '../http/MethodExtractor';
 import CredentialsExtractor from '../authentication/ICredentialsExtractor';
-import RequestBodyParser from './RequestBodyParser';
-import ParsedRequestBody from './IParsedRequestBody';
+import RequestBodyParser from '../http/RequestBodyParser';
+import ParsedRequestBody from '../http/IParsedRequestBody';
 
 import AuthorizationManager from '../authorization/IAuthorizer';
 // import ResourceIdentifier from '../ldp/IResourceIdentifier';
-import LdpOperationFactory from '../ldp/operations/LdpOperationFactory';
+import LdpOperationFactory from './operations/LdpOperationFactory';
 
 /**
  * Handles an HTTP request for the data store.
  */
-export default class ResourceStoreRequestHandler {
+export default class LdpHandler {
   // Extractors and parsers for the request
   protected methodExtractor: MethodExtractor;
   protected targetExtractor: TargetExtractor;
