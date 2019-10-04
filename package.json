@@ -16,7 +16,7 @@
     "@types/jest": "^24.0.11",
     "@types/node": "^10.5.1",
     "jest": "^24.5.0",
-    "node-mocks-http": "github:michielbdejong/node-mocks-http",
+    "node-mocks-http": "^1.7.0",
     "pre-commit": "^1.2.2",
     "ts-jest": "^24.0.0",
     "tslint": "^5.10.0",

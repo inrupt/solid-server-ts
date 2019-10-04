@@ -7,7 +7,9 @@ describe('A MethodExtractor instance', () => {
   beforeAll(() => { extractor = new MethodExtractor(); });
 
   it('defaults to GET', () => {
-    const request = createRequest({ method: undefined });
+    const request: any = createRequest();
+    // see https://github.com/howardabrams/node-mocks-http/pull/195
+    request.method = undefined;
     expect(extractor.extract(request)).toEqual('GET');
   });
 
