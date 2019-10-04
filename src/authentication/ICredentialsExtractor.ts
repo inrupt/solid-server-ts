@@ -1,5 +1,5 @@
 import * as http from 'http';
-import Credentials from '../auth/ICredentials';
+import Credentials from './ICredentials';
 
 /**
  * Extractor for credentials of a request.

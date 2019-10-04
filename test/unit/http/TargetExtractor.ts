@@ -1,4 +1,4 @@
-import TargetExtractor from '../../../src/http/TargetExtractor';
+import TargetExtractor from '../../../src/ldp/TargetExtractor';
 
 import { createRequest } from 'node-mocks-http';
 

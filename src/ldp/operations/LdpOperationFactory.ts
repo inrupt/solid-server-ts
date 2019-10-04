@@ -1,7 +1,7 @@
-import ResourceStore from '../IResourceStore';
+import ResourceStore from '../../storage/IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import Representation from '../IRepresentation';
-import ParsedRequestBody from '../../http/IParsedRequestBody';
+import ParsedRequestBody from '../IParsedRequestBody';
 
 import LdpOperation from './LdpOperation';
 import GetOperation from './GetOperation';

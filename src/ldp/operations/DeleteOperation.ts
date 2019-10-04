@@ -1,10 +1,10 @@
 import LdpOperation from './LdpOperation';
-import ResourceStore from '../IResourceStore';
+import ResourceStore from '../../storage/IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
 import Conditions from '../Conditions';
 import IRepresentationPreferences from '../IRepresentationPreferences';
-import ResponseDescription from '../../http/ResponseDescription';
+import ResponseDescription from '../ResponseDescription';
 
 /**
  * Performs an LDP DELETE operation.
