@@ -9,6 +9,6 @@ export { default as IRepresentation } from './ldp/IRepresentation';
 export { default as IRepresentationMetadata } from './ldp/IRepresentationMetadata';
 export { default as IRepresentationPreferences } from './ldp/IRepresentationPreferences';
 export { default as IResourceIdentifier } from './ldp/IResourceIdentifier';
-export { default as IResourceStore } from './ldp/IResourceStore';
+export { default as IResourceStore } from './storage/IResourceStore';
 export { default as PermissionSet } from './permissions/PermissionSet';
 export { default as ResponseDescription } from './http/ResponseDescription';

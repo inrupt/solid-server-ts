@@ -1,4 +1,4 @@
-import ResourceStore from '../IResourceStore';
+import ResourceStore from '../../storage/IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import Conditions from '../Conditions';
 import LdpOperation from './LdpOperation';
