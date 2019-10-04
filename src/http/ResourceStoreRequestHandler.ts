@@ -4,11 +4,11 @@ import HttpError from 'standard-http-error';
 
 import TargetExtractor from './TargetExtractor';
 import MethodExtractor from './MethodExtractor';
-import CredentialsExtractor from './ICredentialsExtractor';
+import CredentialsExtractor from '../authentication/ICredentialsExtractor';
 import RequestBodyParser from './RequestBodyParser';
 import ParsedRequestBody from './IParsedRequestBody';
 
-import AuthorizationManager from '../auth/IAuthorizer';
+import AuthorizationManager from '../authorization/IAuthorizer';
 // import ResourceIdentifier from '../ldp/IResourceIdentifier';
 import LdpOperationFactory from '../ldp/operations/LdpOperationFactory';
 
@@ -103,7 +103,7 @@ export default class ResourceStoreRequestHandler {
     let agent;
     let target;
     try {
-      agent = this.credentialsExtractor.extract(request);
+      agent = await this.credentialsExtractor.extract(request);
       target = this.targetExtractor.extract(request);
     } catch (cause) {
       throw new HttpError(HttpError.BAD_REQUEST, { cause });
