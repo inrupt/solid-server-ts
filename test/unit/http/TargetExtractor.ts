@@ -109,4 +109,24 @@ describe('A TargetExtractor instance', () => {
     expect(() => extractor.extract(request))
       .toThrowError('Invalid hostname: abc/../');
   });
+
+  it('does not allow hostname to be undefined', () => {
+    const request = createRequest({
+      url: '/',
+      headers: { host: undefined },
+    });
+    expect(() => extractor.extract(request))
+      .toThrowError('Invalid hostname: (none)');
+  });
+
+  it('maps undefined request.url to slash', () => {
+    const request = createRequest({
+      url: undefined,
+      headers: { host: 'example.org' },
+    });
+    const identifier = extractor.extract(request);
+    expect(identifier.path).toEqual('/');
+    expect(identifier.domain).toEqual('example.org');
+    expect(identifier.isAcl).toEqual(false);
+  });
 });
