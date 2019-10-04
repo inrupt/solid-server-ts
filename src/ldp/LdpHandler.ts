@@ -2,11 +2,11 @@ import * as http from 'http';
 
 import HttpError from 'standard-http-error';
 
-import TargetExtractor from '../http/TargetExtractor';
-import MethodExtractor from '../http/MethodExtractor';
+import TargetExtractor from './TargetExtractor';
+import MethodExtractor from './MethodExtractor';
 import CredentialsExtractor from '../authentication/ICredentialsExtractor';
-import RequestBodyParser from '../http/RequestBodyParser';
-import ParsedRequestBody from '../http/IParsedRequestBody';
+import RequestBodyParser from './RequestBodyParser';
+import ParsedRequestBody from './IParsedRequestBody';
 
 import AuthorizationManager from '../authorization/IAuthorizer';
 // import ResourceIdentifier from '../ldp/IResourceIdentifier';
