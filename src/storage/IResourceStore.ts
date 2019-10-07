@@ -1,8 +1,8 @@
-import Patch from './IPatch';
-import IRepresentation from './IRepresentation';
-import IRepresentationPreferences from './IRepresentationPreferences';
-import Conditions from './Conditions';
-import IResourceIdentifier from './IResourceIdentifier';
+import Patch from '../ldp/IPatch';
+import IRepresentation from '../ldp/IRepresentation';
+import IRepresentationPreferences from '../ldp/IRepresentationPreferences';
+import Conditions from '../ldp/Conditions';
+import IResourceIdentifier from '../ldp/IResourceIdentifier';
 
 export default interface IResourceStore {
   /**

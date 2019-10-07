@@ -1,5 +1,5 @@
 import IResourceIdentifier from '../ldp/IResourceIdentifier';
-import Credentials from './ICredentials';
+import Credentials from '../authentication/ICredentials';
 import PermissionSet from '../permissions/PermissionSet';
 
 /**

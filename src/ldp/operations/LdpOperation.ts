@@ -1,10 +1,10 @@
 import PermissionSet from '../../permissions/PermissionSet';
 import IOperation from './IOperation';
-import ResponseDescription from '../../http/ResponseDescription';
+import ResponseDescription from '../ResponseDescription';
 import IRepresentation from '../IRepresentation';
 import IResourceIdentifier from '../IResourceIdentifier';
 import IRepresentationPreferences from '../IRepresentationPreferences';
-import IResourceStore from '../IResourceStore';
+import IResourceStore from '../../storage/IResourceStore';
 
 /**
  * Base class for LDP operations.

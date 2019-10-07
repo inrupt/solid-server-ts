@@ -1,7 +1,7 @@
 import IResourceIdentifier from '../IResourceIdentifier';
 import IRepresentation from '../IRepresentation';
 import PermissionSet from '../../permissions/PermissionSet';
-import ResponseDescription from '../../http/ResponseDescription';
+import ResponseDescription from '../ResponseDescription';
 import IRepresentationPreferences from '../IRepresentationPreferences';
 
 /**
