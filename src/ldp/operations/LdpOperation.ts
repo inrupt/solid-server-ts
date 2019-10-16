@@ -28,6 +28,19 @@ export default abstract class LdpOperation implements IOperation {
     this.preferences = preferences;
   }
 
+  get body(): IRepresentation | undefined { return this.requestBody }
+
+  // TODO: How should this work? 
+  set body(body: IRepresentation | undefined) { this.requestBody = body }
+
+  // TODO: Should there be a "parsedBody" getter and setter and instance variable?
+
+  // TODO: How should these return the method? I know that in the issue you said it's via the method but the method isn't exposed to this class
+
+  get acceptsBody(): boolean { return false }
+
+  get acceptsParsedBody(): boolean { return false }
+
   get requiredPermissions(): PermissionSet { return PermissionSet.READ_ONLY; }
 
   public async execute(): Promise<ResponseDescription> {

@@ -5,7 +5,7 @@ import HttpError from 'standard-http-error';
 import TargetExtractor from './TargetExtractor';
 import MethodExtractor from './MethodExtractor';
 import CredentialsExtractor from '../authentication/ICredentialsExtractor';
-import RequestBodyParser from './RequestBodyParser';
+import RequestBodyParser from './IRequestBodyParser';
 import ParsedRequestBody from './IParsedRequestBody';
 
 import AuthorizationManager from '../authorization/IAuthorizer';
@@ -118,12 +118,13 @@ export default class LdpHandler {
       throw new HttpError(HttpError.METHOD_NOT_ALLOWED);
     }
     // Pass the body to the operation if necessary
-    // if (operation.acceptsBody) {
-    //   operation.body = request;
-    // }
-    // if (operation.acceptsParsedBody) {
-    //   operation.parsedBody = await this.parseRequestBody(request);
-    // }
+    if (operation.acceptsBody) {
+      // TODO: Should this be an http request? Shouldn't it be the body or better yet the IRepresentation of the body?
+      operation.body = request;
+    }
+    if (operation.acceptsParsedBody) {
+      operation.parsedBody = await this.parseRequestBody(request);
+    }
 
     // Determine whether the target requires control permissions
     let requiredPermissions = operation.requiredPermissions;
