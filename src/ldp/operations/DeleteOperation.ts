@@ -4,7 +4,7 @@ import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
 import Conditions from '../Conditions';
 import IRepresentationPreferences from '../IRepresentationPreferences';
-import ResponseDescription from '../ResponseDescription';
+import ResponseDescription from '../IResponseDescription';
 
 /**
  * Performs an LDP DELETE operation.
