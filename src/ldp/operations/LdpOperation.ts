@@ -1,6 +1,6 @@
 import PermissionSet from '../../permissions/PermissionSet';
 import IOperation from './IOperation';
-import ResponseDescription from '../IResponseDescription';
+import IResponseDescription from '../IResponseDescription';
 import IRepresentation from '../IRepresentation';
 import IResourceIdentifier from '../IResourceIdentifier';
 import IRepresentationPreferences from '../IRepresentationPreferences';
@@ -30,7 +30,5 @@ export default abstract class LdpOperation implements IOperation {
 
   get requiredPermissions(): PermissionSet { return PermissionSet.READ_ONLY; }
 
-  public async execute(): Promise<ResponseDescription> {
-    return new ResponseDescription();
-  }
+  public abstract async execute(): Promise<IResponseDescription>;
 }

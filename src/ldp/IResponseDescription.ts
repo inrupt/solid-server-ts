@@ -1,4 +1,4 @@
-import { IRepresentation } from "../exports";
+import { IRepresentation } from '../exports';
 
 export enum ResultType {
   CouldNotParse,
@@ -12,13 +12,13 @@ export enum ResultType {
   OkayWithoutBody,
   Created,
   MethodNotAllowed,
-  InternalServerError
+  InternalServerError,
 }
 
 export default interface IResponseDescription {
-  resourcesChanged?: Array<URL>
-  resultType: ResultType
-  resourceData?: IRepresentation
-  createdLocation?: URL
-  isContainer: boolean
+  resourcesChanged?: URL[];
+  resultType: ResultType;
+  resourceData?: IRepresentation;
+  createdLocation?: URL;
+  isContainer: boolean;
 }

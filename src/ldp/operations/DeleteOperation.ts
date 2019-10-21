@@ -2,9 +2,8 @@ import LdpOperation from './LdpOperation';
 import ResourceStore from '../../storage/IResourceStore';
 import ResourceIdentifier from '../IResourceIdentifier';
 import PermissionSet from '../../permissions/PermissionSet';
-import Conditions from '../Conditions';
 import IRepresentationPreferences from '../IRepresentationPreferences';
-import ResponseDescription from '../IResponseDescription';
+import IResponseDescription, { ResultType } from '../IResponseDescription';
 
 /**
  * Performs an LDP DELETE operation.
@@ -20,8 +19,11 @@ export default class DeleteOperation extends LdpOperation {
 
   get requiredPermissions(): PermissionSet { return PermissionSet.WRITE_ONLY; }
 
-  public async execute(): Promise<ResponseDescription> {
-    await this.store.deleteResource(this.target, {} as Conditions);
-    return new ResponseDescription();
+  // TODO: Implement
+  async execute(): Promise<IResponseDescription> {
+    return {
+      isContainer: false,
+      resultType: ResultType.NotFound
+    }
   }
 }

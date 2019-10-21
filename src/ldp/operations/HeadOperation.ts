@@ -3,6 +3,8 @@ import ResourceIdentifier from '../IResourceIdentifier';
 import LdpOperation from './LdpOperation';
 import IRepresentationPreferences from '../IRepresentationPreferences';
 import PermissionSet from '../../permissions/PermissionSet';
+import { IResponseDescription } from '../../exports';
+import { ResultType } from '../IResponseDescription';
 
 /**
  * Performs an LDP HEAD operation.
@@ -16,4 +18,12 @@ export default class HeadOperation extends LdpOperation {
   }
 
   get requiredPermissions(): PermissionSet { return PermissionSet.READ_ONLY; }
+
+  // TODO: Implement
+  async execute(): Promise<IResponseDescription> {
+    return {
+      isContainer: false,
+      resultType: ResultType.NotFound
+    }
+  }
 }

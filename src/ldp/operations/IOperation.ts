@@ -1,7 +1,7 @@
 import IResourceIdentifier from '../IResourceIdentifier';
 import IRepresentation from '../IRepresentation';
 import PermissionSet from '../../permissions/PermissionSet';
-import ResponseDescription from '../IResponseDescription';
+import IResponseDescription from '../IResponseDescription';
 import IRepresentationPreferences from '../IRepresentationPreferences';
 
 /**
@@ -12,5 +12,5 @@ export default interface IOperation {
   requestBody?: IRepresentation;
   preferences: IRepresentationPreferences;
   requiredPermissions: PermissionSet;
-  execute: () => Promise<ResponseDescription>;
+  execute: () => Promise<IResponseDescription>;
 }

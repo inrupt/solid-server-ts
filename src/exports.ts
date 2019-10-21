@@ -11,4 +11,4 @@ export { default as IRepresentationPreferences } from './ldp/IRepresentationPref
 export { default as IResourceIdentifier } from './ldp/IResourceIdentifier';
 export { default as IResourceStore } from './storage/IResourceStore';
 export { default as PermissionSet } from './permissions/PermissionSet';
-export { default as ResponseDescription } from './ldp/IResponseDescription';
+export { default as IResponseDescription } from './ldp/IResponseDescription';
