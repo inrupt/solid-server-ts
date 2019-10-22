@@ -5,6 +5,7 @@ import IRepresentation from '../IRepresentation';
 import IResourceIdentifier from '../IResourceIdentifier';
 import IRepresentationPreferences from '../IRepresentationPreferences';
 import IResourceStore from '../../storage/IResourceStore';
+import IParsedRequestBody from '../IParsedRequestBody';
 
 /**
  * Base class for LDP operations.
@@ -30,12 +31,11 @@ export default abstract class LdpOperation implements IOperation {
 
   get body(): IRepresentation | undefined { return this.requestBody }
 
-  // TODO: How should this work? 
   set body(body: IRepresentation | undefined) { this.requestBody = body }
 
-  // TODO: Should there be a "parsedBody" getter and setter and instance variable?
+  get parsedBody(): IParsedRequestBody | undefined { return this.parsedBody }
 
-  // TODO: How should these return the method? I know that in the issue you said it's via the method but the method isn't exposed to this class
+  set parsedBody(parsedBody: IParsedRequestBody | undefined) { this.parsedBody = parsedBody }
 
   get acceptsBody(): boolean { return false }
 

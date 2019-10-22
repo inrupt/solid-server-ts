@@ -5,7 +5,7 @@ import HttpError from 'standard-http-error';
 import TargetExtractor from './TargetExtractor';
 import MethodExtractor from './MethodExtractor';
 import CredentialsExtractor from '../authentication/ICredentialsExtractor';
-import RequestBodyParser from './IRequestBodyParser';
+import IRequestBodyParser from './IRequestBodyParser';
 import ParsedRequestBody from './IParsedRequestBody';
 
 import AuthorizationManager from '../authorization/IAuthorizer';
@@ -20,7 +20,7 @@ export default class LdpHandler {
   protected methodExtractor: MethodExtractor;
   protected targetExtractor: TargetExtractor;
   protected credentialsExtractor: CredentialsExtractor;
-  protected bodyParsers: RequestBodyParser[];
+  protected bodyParsers: IRequestBodyParser[];
 
   // Operations
   protected operations: LdpOperationFactory;
@@ -34,7 +34,7 @@ export default class LdpHandler {
               { methodExtractor: MethodExtractor,
                 targetExtractor: TargetExtractor,
                 credentialsExtractor: CredentialsExtractor,
-                bodyParsers?: RequestBodyParser[],
+                bodyParsers?: IRequestBodyParser[],
                 operations: LdpOperationFactory,
                 authorizationManager: AuthorizationManager }) {
     this.methodExtractor = methodExtractor;
@@ -119,8 +119,15 @@ export default class LdpHandler {
     }
     // Pass the body to the operation if necessary
     if (operation.acceptsBody) {
-      // TODO: Should this be an http request? Shouldn't it be the body or better yet the IRepresentation of the body?
-      operation.body = request;
+      if (!request.headers['content-type']) {
+        throw new HttpError(HttpError.BAD_REQUEST);
+      }
+      operation.body = {
+        data: request,
+        metadata: {
+          contentType: request.headers['content-type'],
+        },
+      };
     }
     if (operation.acceptsParsedBody) {
       operation.parsedBody = await this.parseRequestBody(request);
